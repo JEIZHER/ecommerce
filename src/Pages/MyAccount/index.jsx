@@ -1,13 +1,7 @@
-import {Layout} from '../../Components/Layout'
+import { Layout } from "../../Components/Layout";
 
 function MyAccount() {
+  return <Layout>MyAccount</Layout>;
+}
 
-
-    return (
-        <Layout>
-       MyAccount
-        </Layout>
-    )
-  }
-  
-  export  {MyAccount}
+export { MyAccount };
