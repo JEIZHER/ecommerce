@@ -23,8 +23,9 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
+    <NavBar/>
       <AppRoutes />
-      <NavBar/>
+      
     </BrowserRouter>
   );
 };
