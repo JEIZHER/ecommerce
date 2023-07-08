@@ -15,10 +15,24 @@ const Card = ({data}) => {
           alt={data.title}
         />
         <div 
-        className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 px-3 py-0.5"
+        className="absolute top-0 right-0 flex justify-center items-center  bg-white w-6 h-6 rounded-full m-2 px-3 py-0.5 "
         onClick={()=>context.setCount(context.count+1)}
-        >
-          +
+        > <div>
+   <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+              clip-rule="evenodd"
+            />
+          </svg>
+
+        </div>
+       
         </div>
       </figure>
 
