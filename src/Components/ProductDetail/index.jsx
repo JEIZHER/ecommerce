@@ -2,14 +2,19 @@ import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
 const ProductDetail = () => {
-  const context = useContext(ShoppingCartContext)
+  const context = useContext(ShoppingCartContext);
+  
   return (
-    <aside className={`${context.isProductDetailOpen? 'flex':'hidden'} flex-col fixed right-0 border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-80px)]`}>
+    <aside
+      className={`${
+        context.isProductDetailOpen ? "flex" : "hidden"
+      } flex-col fixed right-0 border bg-white border-black rounded-lg w-[360px] h-[calc(100vh-80px)]`}
+    >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
-        <div onClick={()=>context.closeProductDetail()}>
+        <div className="cursor-pointer" onClick={() => context.closeProductDetail()}>
           <svg
-            xmlns="https://www.w3.org/2000/svg"
+            // xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
             className="w-6 h-6"
@@ -22,6 +27,18 @@ const ProductDetail = () => {
           </svg>
         </div>
       </div>
+      <figure className="p-3">
+        <img
+           className="w-full h-full rounded-lg"
+           src={context.productToShow.images?.[0]}
+            alt={context.productToShow.title}
+        />
+      </figure>
+      <p className="flex flex-col p-6">
+        <span className="font-medium text-2xl mb-2">${context.productToShow.price}</span>
+        <span className="font-medium text-md"> {context.productToShow.title}</span>
+        <span className="font-ligth text-sm">  {context.productToShow.description}</span>
+      </p>
     </aside>
   );
 };

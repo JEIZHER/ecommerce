@@ -1,12 +1,20 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 
+
+
 const Card = ({data}) => {
   const context = useContext(ShoppingCartContext)
+
+const showProduct=(dataDetail)=>{  
+    context.openProductDetail()
+    context.setProductToShow(dataDetail) 
+}
+
   return (
     <div 
     className="bg-white cursor-pointer w-56 h-60 rounded-lg" 
-    onClick={()=>context.openProductDetail()}
+    onClick={()=>showProduct(data)}
     >
       <figure className="relative mb-3 w-full h-4/5">
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 p-1">
@@ -24,7 +32,7 @@ const Card = ({data}) => {
           context.setCount(context.count+1)}}
         > <div>
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            // xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
             viewBox="0 0 20 20"
             fill="currentColor"
