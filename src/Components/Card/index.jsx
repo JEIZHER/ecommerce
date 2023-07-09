@@ -9,6 +9,15 @@ const Card = ({data}) => {
 const showProduct=(dataDetail)=>{  
     context.openProductDetail()
     context.setProductToShow(dataDetail) 
+    context.closeCheckoutSideMenu()
+}
+const addProductsToCart = (event, productData) => {
+  event.stopPropagation()
+  context.setCount(context.count + 1)
+  context.setCartProducts([...context.cartProducts, productData])
+  context.openCheckoutSideMenu()
+  context.closeProductDetail()
+  console.log('CART: ', context.cartProducts)
 }
 
   return (
@@ -27,10 +36,9 @@ const showProduct=(dataDetail)=>{
         />
         <div 
         className="absolute top-0 right-0 flex justify-center items-center  bg-white w-6 h-6 rounded-full m-2 px-3 py-0.5 "
-        onClick={(event)=>{
-          event.stopPropagation();
-          context.setCount(context.count+1)}}
-        > <div>
+        onClick={(event)=>addProductsToCart(event ,data)}>
+   
+         <div>
           <svg
             // xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"

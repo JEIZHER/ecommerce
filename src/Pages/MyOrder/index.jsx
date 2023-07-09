@@ -3,7 +3,10 @@ import { Layout } from "../../Components/Layout";
 function MyOrder() {
   return (
     <>
-      <Layout>MyOrder</Layout>
+      <Layout>
+
+        <CheckoutSideMenu/>
+      </Layout>
     </>
   );
 }
