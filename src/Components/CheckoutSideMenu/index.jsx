@@ -4,7 +4,7 @@ import { OrderCard } from "../OrderCard";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
-  console.log('CART: ', context.cartProducts)
+  
   return (
     <aside
       className={`${
@@ -13,7 +13,10 @@ const CheckoutSideMenu = () => {
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">My Order</h2>
-        <div className="cursor-pointer" onClick={() => context.closeCheckoutSideMenu()}>
+        <div
+          className="cursor-pointer"
+          onClick={() => context.closeCheckoutSideMenu()}
+        >
           <svg
             // xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -28,23 +31,17 @@ const CheckoutSideMenu = () => {
           </svg>
         </div>
       </div>
-      <div className="px-6">
- {
-        
-        context.cartProducts.map(product=>(
-         <OrderCard
-         key={product.id}
-         title={product.title} 
-         imageUrl={product.images?.[0]}
-         price={product.price}
+      <div className="px-6 overflow-y-scroll">
+        {context.cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            title={product.title}
+            imageUrl={product.images?.[0]}
+            price={product.price}
           />
-
-        ))
-      }
-
+        ))}
       </div>
-     
-      </aside>
+    </aside>
   );
 };
-export {CheckoutSideMenu};
+export { CheckoutSideMenu };
