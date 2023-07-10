@@ -1,5 +1,5 @@
 const OrderCard = (props) => {
-  const { title, imageUrl, price } = props;
+  const {id, title, imageUrl, price,handleDelete } = props;
   return (
     <div className="flex justify-between items-center mb-2">
       <div className="flex item-center gap-2">
@@ -14,7 +14,9 @@ const OrderCard = (props) => {
       </div>
       <div className="flex item-center gap-2">
         <p className="text-lg font-medium"> {price} </p>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={()=>
+          handleDelete(id)
+        }>
           <svg
             // xmlns="https://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
