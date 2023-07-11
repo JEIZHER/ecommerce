@@ -2,32 +2,31 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCartContext } from "../../Context";
 import { OrderCard } from "../OrderCard";
-import {totalPrice }from '../../utils'
+import { totalPrice } from "../../utils";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
 
-  const handleDelete=(id)=>{
-    const filteredProducts= context.cartProducts.filter(product=>product.id !=id)
-    context.setCartProducts(filteredProducts)
-    context.setCount(context.count - 1)
-  }
+  const handleDelete = (id) => {
+    const filteredProducts = context.cartProducts.filter(
+      (product) => product.id != id
+    );
+    context.setCartProducts(filteredProducts);
+    context.setCount(context.count - 1);
+  };
 
-  const handleCheckout=()=>{
-      const orderToAdd= {
-          date:'01-01-23',
-          products:context.cartProducts,
-          totalProducts:context.cartProducts.length,
-          totalPrice:totalPrice(context.cartProducts)
-
-      }
-      context.setOrder([...context.order,orderToAdd])
-      context.setCartProducts([])
-      context.closeCheckoutSideMenu()
-      context.setCount(0)
-
-  }
-
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: "01-01-23",
+      products: context.cartProducts,
+      totalProducts: context.cartProducts.length,
+      totalPrice: totalPrice(context.cartProducts),
+    };
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+    context.closeCheckoutSideMenu();
+    context.setCount(0);
+  };
 
   return (
     <aside
@@ -70,15 +69,20 @@ const CheckoutSideMenu = () => {
       <div className="px-6 mb-6">
         <p className="flex justify-between item-center mb-2">
           <span className="font-light">Total</span>
-          <span className="font-medium text-2xl">${totalPrice(context.cartProducts)}</span>
+          <span className="font-medium text-2xl">
+            ${totalPrice(context.cartProducts)}
+          </span>
         </p>
-       <Link to='/MyOrders/last'>
-       <button className="bg-black text-white py-3 w-full rounded-lg" onClick={()=>handleCheckout()} >Checkout</button>
-       </Link>
-        
+        <Link to="/MyOrders/last">
+          <button
+            className="bg-black text-white py-3 w-full rounded-lg"
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
-
     </aside>
   );
-}; 
+};
 export { CheckoutSideMenu };
