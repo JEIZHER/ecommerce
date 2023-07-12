@@ -9,11 +9,15 @@ const NavBar = () => {
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 bg-white text-sm font-ligth">
       <ul className="flex align-center gap-3">
         <li className="font-semibold text-lg">
-          <NavLink to="/">Shopi</NavLink>
+          <NavLink 
+          to="/"
+          onClick={()=>context.setSearchByCategory()}
+          >Shopi</NavLink>
         </li>
         <li>
           <NavLink
-            to="/all"
+            to="/"
+            onClick={()=>context.setSearchByCategory()}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             All
@@ -22,6 +26,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/clothes"
+            onClick={()=>context.setSearchByCategory('clothes')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Clothes
@@ -29,7 +34,8 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/electronics"
+            to="/electronics" 
+            onClick={()=>context.setSearchByCategory('electronics')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Electronics
@@ -38,6 +44,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/furnitures"
+            onClick={()=>context.setSearchByCategory('furnitures')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Furnitures
@@ -45,14 +52,16 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/toys"
+            to="/toys" 
+            onClick={()=>context.setSearchByCategory('toys')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Toys
           </NavLink>
         </li>
         <li>
-          <NavLink
+          <NavLink 
+            onClick={()=>context.setSearchByCategory('others')}
             to="/others"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
