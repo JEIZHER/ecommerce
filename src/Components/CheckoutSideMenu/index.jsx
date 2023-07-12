@@ -6,12 +6,8 @@ import { totalPrice } from "../../utils";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
-  const currentDate = () => {
-    const date = new Date().toLocaleDateString();
-    return date
- }
-
-  const handleDelete = (id) => {
+   const handleDelete = (id) => {
+    
     const filteredProducts = context.cartProducts.filter(
       (product) => product.id != id
     );
