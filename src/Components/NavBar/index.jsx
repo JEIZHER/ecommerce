@@ -9,15 +9,14 @@ const NavBar = () => {
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 bg-white text-sm font-ligth">
       <ul className="flex align-center gap-3">
         <li className="font-semibold text-lg">
-          <NavLink 
-          to="/"
-          onClick={()=>context.setSearchByCategory()}
-          >Shopi</NavLink>
+          <NavLink to="/" onClick={() => context.setSearchByCategory()}>
+            Shopi
+          </NavLink>
         </li>
         <li>
           <NavLink
             to="/"
-            onClick={()=>context.setSearchByCategory()}
+            onClick={() => context.setSearchByCategory()}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             All
@@ -26,7 +25,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/clothes"
-            onClick={()=>context.setSearchByCategory('clothes')}
+            onClick={() => context.setSearchByCategory("clothes")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Clothes
@@ -34,8 +33,8 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/electronics" 
-            onClick={()=>context.setSearchByCategory('electronics')}
+            to="/electronics"
+            onClick={() => context.setSearchByCategory("electronics")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Electronics
@@ -44,7 +43,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/furnitures"
-            onClick={()=>context.setSearchByCategory('furnitures')}
+            onClick={() => context.setSearchByCategory("furnitures")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Furnitures
@@ -52,16 +51,16 @@ const NavBar = () => {
         </li>
         <li>
           <NavLink
-            to="/toys" 
-            onClick={()=>context.setSearchByCategory('toys')}
+            to="/toys"
+            onClick={() => context.setSearchByCategory("toys")}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Toys
           </NavLink>
         </li>
         <li>
-          <NavLink 
-            onClick={()=>context.setSearchByCategory('others')}
+          <NavLink
+            onClick={() => context.setSearchByCategory("others")}
             to="/others"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
@@ -99,24 +98,21 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li className="flex items-center">
-          
-            <svg
-              // xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            <div> {context.count} </div>
-            
-    
+          <svg
+            // xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          <div> {context.cartProducts.length} </div>
         </li>
       </ul>
     </nav>

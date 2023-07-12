@@ -6,8 +6,7 @@ import { totalPrice } from "../../utils";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
-   const handleDelete = (id) => {
-    
+  const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(
       (product) => product.id != id
     );
@@ -25,7 +24,7 @@ const CheckoutSideMenu = () => {
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProducts([]);
     context.closeCheckoutSideMenu();
-    context.setCount(0);
+    context.setSearchByTitle(null);
   };
 
   return (

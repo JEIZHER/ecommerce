@@ -34,51 +34,70 @@ export const ShoppingCartProvider = ({ children }) => {
   // get products by category
   const [searchByCategory, setSearchByCategory] = useState(null);
 
-
-
-    useEffect(() => {
+  useEffect(() => {
     fetch("https://api.escuelajs.co/api/v1/products")
       .then((response) => response.json())
-      .then((data) => setItems(data))
-      
+      .then((data) => setItems(data));
   }, []);
 
   const filteredItemsByTitle = (items, searchByTitle) => {
-    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+    return items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle.toLowerCase())
     );
   };
 
   const filteredItemsByCategory = (items, searchByCategory) => {
-    return items?.filter(item => item.category.name.toLowerCase().includes(searchByCategory.toLowerCase())
+    return items?.filter((item) =>
+      item.category.name.toLowerCase().includes(searchByCategory.toLowerCase())
     );
   };
 
-const filteredBy=(searchType,items,searchByCategory,searchByTitle)=>{
-if(searchType==='BY_CATEGORY'){ 
-  return filteredItemsByCategory(items , searchByCategory)
-}
-if(searchType==='BY_TITLE'){ 
-  return filteredItemsByTitle(items , searchByTitle)
-}
+  const filteredBy = (searchType, items, searchByCategory, searchByTitle) => {
+    if (searchType === "BY_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory);
+    }
+    if (searchType === "BY_TITLE") {
+      return filteredItemsByTitle(items, searchByTitle);
+    }
 
-if(searchType==='BY_TITLE_AND_CATEGORY'){ 
-  return filteredItemsByCategory(items , searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
-}
+    if (searchType === "BY_TITLE_AND_CATEGORY") {
+      return filteredItemsByCategory(items, searchByCategory).filter((item) =>
+        item.title.toLowerCase().includes(searchByTitle.toLowerCase())
+      );
+    }
 
-if(searchType==='null'){ 
-  return items
-}
-
-}
+    if (searchType === "null") {
+      return items;
+    }
+  };
 
   useEffect(() => {
-    if (searchByTitle && searchByCategory ){ setFilteredItems(filteredBy( 'BY_TITLE_AND_CATEGORY', items , searchByCategory, searchByTitle))}
-    if (!searchByTitle && searchByCategory ){ setFilteredItems(filteredBy('BY_CATEGORY' , items , searchByCategory, searchByTitle))}
-    if (searchByTitle && !searchByCategory ){ setFilteredItems(filteredBy( 'BY_TITLE', items , searchByCategory, searchByTitle))}
-    if (!searchByTitle && !searchByCategory ){ setFilteredItems(filteredBy( 'null', items , searchByCategory, searchByTitle))}
-    
-  }, [items, searchByTitle , searchByCategory] );
- 
+    if (searchByTitle && searchByCategory) {
+      setFilteredItems(
+        filteredBy(
+          "BY_TITLE_AND_CATEGORY",
+          items,
+          searchByCategory,
+          searchByTitle
+        )
+      );
+    }
+    if (!searchByTitle && searchByCategory) {
+      setFilteredItems(
+        filteredBy("BY_CATEGORY", items, searchByCategory, searchByTitle)
+      );
+    }
+    if (searchByTitle && !searchByCategory) {
+      setFilteredItems(
+        filteredBy("BY_TITLE", items, searchByCategory, searchByTitle)
+      );
+    }
+    if (!searchByTitle && !searchByCategory) {
+      setFilteredItems(
+        filteredBy("null", items, searchByCategory, searchByTitle)
+      );
+    }
+  }, [items, searchByTitle, searchByCategory]);
 
   return (
     <ShoppingCartContext.Provider
@@ -103,7 +122,7 @@ if(searchType==='null'){
         setSearchByTitle,
         filteredItems,
         searchByCategory,
-        setSearchByCategory
+        setSearchByCategory,
       }}
     >
       {children}
