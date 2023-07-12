@@ -1,4 +1,3 @@
-import React from "react";
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../Context";
 import { Layout } from "../../Components/Layout";
@@ -17,7 +16,7 @@ function Home() {
         onChange={(event) => context.setSearchByTitle(event.target.value)}
       />
       <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
-        {context.filteredItems.length > 0 ? (
+        {context.filteredItems?.length > 0 ? (
           context.filteredItems?.map((item) => (
             <Card key={item.id} data={item} />
           ))
