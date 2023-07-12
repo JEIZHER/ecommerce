@@ -20,7 +20,7 @@ function Home() {
        onChange={(event)=> context.setSearchByTitle(event.target.value)}
        />
       <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
-        {context.items?.map((item) => (
+        {context.filteredItems?.map((item) => (
           <Card key={item.id} data={item} />
         ))}
       </div>
