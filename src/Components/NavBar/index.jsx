@@ -5,6 +5,14 @@ import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const context = useContext(ShoppingCartContext);
   const activeStyle = "underline underline-offset-4";
+
+  const handleSignOut = () => {
+    const stringifiedSignOut = JSON.stringify(true)
+    localStorage.setItem('sign-out', stringifiedSignOut)
+    context.setSignOut(true)
+  }
+
+
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 bg-white text-sm font-ligth">
       <ul className="flex align-center gap-3">
@@ -93,6 +101,7 @@ const NavBar = () => {
           <NavLink
             to="/SignIn"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={()=> handleSignOut()}
           >
             Sign In
           </NavLink>
