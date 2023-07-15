@@ -36,7 +36,7 @@ const NavBar = () => {
       return (
         <>
           <li className="text-black/60">
-            <NavLink>New.jeizher@gmail.com</NavLink>
+            <NavLink>{parsedAccount?.email}</NavLink>
           </li>
           <li>
             <NavLink
@@ -82,7 +82,7 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 bg-white text-sm font-ligth">
-      <ul className="flex align-center gap-3">
+      <ul className="flex align-center gap-3 items-center">
         <li className="font-semibold text-lg">
           <NavLink
             to={`${isUserSignOut ? "/signIn" : "/"}`}

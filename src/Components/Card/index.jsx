@@ -87,7 +87,7 @@ const renderIcon = (id)=>{
         {renderIcon(data.id)}             
        </figure>
 
-       <p className="flex justify-between">
+       <p className="flex justify-between items-center">
        <span className="text-sm font-light">{data.title}</span>
        <span className="text-lg font-medium">${data.price}</span>
        </p>
