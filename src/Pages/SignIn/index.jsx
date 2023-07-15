@@ -7,7 +7,7 @@ function SignIn() {
   const context = useContext(ShoppingCartContext);
   const [view, setView] = useState("user-info");
   const form = useRef(null);
-
+//----------------------------------------------------------------------------------------
   // Account
   const account = localStorage.getItem("account");
   const parsedAccount = JSON.parse(account);
@@ -19,7 +19,7 @@ function SignIn() {
     ? Object.keys(context.account).length === 0
     : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
-
+//----------------------------------------------------------------------------------------
   const handleSignIn = () => {
     const stringifiedSignOut = JSON.stringify(false);
     localStorage.setItem("sign-out", stringifiedSignOut);
